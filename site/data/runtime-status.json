@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source": "unconnected",
+  "observed_at": null,
+  "currency": "USD",
+  "payment_verification": "not-connected",
+  "payment_evidence_url": null,
+  "evidence_links": [],
+  "metrics": {
+    "active_nca_workers": null,
+    "verified_deliveries": null,
+    "confirmed_payments": null,
+    "confirmed_revenue": null
+  }
+}
