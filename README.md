@@ -4,12 +4,6 @@
 
 Founder • Owner • CEO • Chief Systems Architect: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
 
-## Public-equity CRM and AI competition benchmark — 3 November 2026
-
-[Read the full evidence-backed public-equity valuation and product roadmap](docs/2026-11-03_PUBLIC_EQUITY_CRM_PEER_BENCHMARK.md). The report compares Salesforce (CRM), HubSpot (HUBS), SAP (SAP) and Microsoft (MSFT) using the US November 2, 2026 closing snapshot, quarter-specific issuer financials, EV/LTM revenue, peer business-model exclusions and AI-agent pricing patterns.
-
-**Screening only:** market caps and enterprise multiples are values of existing listed securities and do not justify a private valuation for IMPERIAL Core without independently verified operating revenue, retention, margins, dilutive securities and contracts. No investment, paid subscription, actual NCA dispatch or customer monetization was initiated.
-
 ## New: CRM-SOFFT Private Read-only Bridge × HANTER review — Sprint 002
 
 [Fixed-query PostgreSQL bridge](crm_bridge/readonly.py) · [Fail-closed HANTER triage](crm_bridge/triage.py) · [Enterprise specification](docs/CRM_SOFTT_SPRINT_002_PRIVATE_BRIDGE.md) · [30/30 Python 3.11 and 3.12 CI](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41605063519) · [Real isolated PostgreSQL 17 proof](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41605467918).
