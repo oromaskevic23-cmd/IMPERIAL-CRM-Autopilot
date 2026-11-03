@@ -4,6 +4,14 @@
 
 Founder • Owner • CEO • Chief Systems Architect: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
 
+## IMPERIAL Core: CRM-SOFFT NCA release authority — Sprint 003
+
+**Implementation focus: our own IMPERIAL Core operating system, not competitors.** [Fail-closed production-readiness gate](crm_control/release_gate.py) · [26 adversarial tests](tests/test_crm_release_gate.py) · [Architecture and production requirements](docs/CRM_SOFTT_SPRINT_003_NCA_RELEASE_GATE.md) · [GitHub Actions 26/26 PASS on Python 3.11/3.12](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41685910346).
+
+The new control gate explicitly **DENIES** actual NCA dispatch, customer outreach, payment confirmation, private data publication and Owner role transfer until external trusted authorizations are independently verified. Even an all-green self-reported status document cannot promote an agent to production. The demonstration is synthetic and there is **no active HANTER production worker** implied.
+
+A separate read-only audit of our real Supabase `crm_sofft` database found 21 agent records still `REGISTERED_NOT_AUTHORIZED`, 11 workspaces `CONFIGURING`, and no payment/revenue rows in the checked tables. A private, non-identifying aggregate snapshot was committed to the **private** IMPERIAL Core governance repository. No real customer records, payment details, passports or credentials are published here.
+
 ## New: CRM-SOFFT Private Read-only Bridge × HANTER review — Sprint 002
 
 [Fixed-query PostgreSQL bridge](crm_bridge/readonly.py) · [Fail-closed HANTER triage](crm_bridge/triage.py) · [Enterprise specification](docs/CRM_SOFTT_SPRINT_002_PRIVATE_BRIDGE.md) · [30/30 Python 3.11 and 3.12 CI](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41605063519) · [Real isolated PostgreSQL 17 proof](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41605467918).
