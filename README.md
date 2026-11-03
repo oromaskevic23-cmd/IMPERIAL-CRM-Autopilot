@@ -4,6 +4,14 @@
 
 Founder • Owner • CEO • Chief Systems Architect: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
 
+## New: CRM-SOFFT Private Read-only Bridge × HANTER review — Sprint 002
+
+[Fixed-query PostgreSQL bridge](crm_bridge/readonly.py) · [Fail-closed HANTER triage](crm_bridge/triage.py) · [Enterprise specification](docs/CRM_SOFTT_SPRINT_002_PRIVATE_BRIDGE.md) · [30/30 Python 3.11 and 3.12 CI](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41605063519) · [Real isolated PostgreSQL 17 proof](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41605467918).
+
+**Verified results:** 30/30 aggregate-query and adversarial routing tests PASS on each supported Python version; in a separate disposable PostgreSQL 17 instance, three actual SQL integration tests PASS, including a **database-level rejection of an unauthorized INSERT**. HANTER receives only a review proposal; no signed Owner command, customer outreach, real agent or payment is issued.
+
+**Live Supabase is NOT connected to this new runtime adapter.** Existing CRM-SOFFT data was inspected independently using read-only privileged project tooling. A suitable private reporting identity, tenant-scoped RLS policies and protected Owner/Approval Gateway controls must exist before activating the adapter on production. No client records, credentials or private runtime snapshots are committed here.
+
 ## New: CRM-SOFFT Deal Integrity & Federated Dispatch — verified 3 November 2026
 
 [Working Python/SQLite laboratory engine](crm_core/engine.py) · [Executable one-shot pilot](crm_core/__main__.py) · [22 adversarial unit tests](tests/test_crm_core.py) · [Enterprise sprint specification](docs/CRM_SOFTT_SPRINT_001_DEAL_INTEGRITY.md) · [GitHub Actions proof](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41602727818).
