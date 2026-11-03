@@ -4,6 +4,16 @@
 
 Founder • Owner • CEO • Chief Systems Architect: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
 
+## New: CRM-SOFFT Deal Integrity & Federated Dispatch — verified 3 November 2026
+
+[Working Python/SQLite laboratory engine](crm_core/engine.py) · [Executable one-shot pilot](crm_core/__main__.py) · [22 adversarial unit tests](tests/test_crm_core.py) · [Enterprise sprint specification](docs/CRM_SOFTT_SPRINT_001_DEAL_INTEGRITY.md) · [GitHub Actions proof](https://github.com/oromaskevic23-cmd/IMPERIAL-CRM-Autopilot/actions/runs/41602727818).
+
+**Real verification:** **22/22 PASS on Python 3.11 and 22/22 PASS on Python 3.12**, including a complete *synthetic* lead → domain-orchestrator → five NCA role plans → leased task → lab QA receipt → persisted stop cycle. Run `python3 -m unittest discover -s tests -p 'test_crm_core.py' -v` and `python3 -m crm_core` from the repo root; no paid API, cloud account or dependency installation required.
+
+The money boundary is strict: `confirm_payment` and `send_offer` **reject all calls** until an authenticated customer mandate, Guardian Core, Approval Gateway, independent QA and trusted payment-provider reconciliation are integrated. Illustrative quotes cannot become `PAYMENT_CONFIRMED` revenue. The local database is not the production `crm_sofft` schema, callers are not authenticated tenants, and mock roles are not active agents.
+
+**Live Supabase note:** a separate read-only review confirmed existing CRM-SOFFT records but found security configuration requiring a staged private policy audit. No live database permissions, customers, tasks or payments were changed by this sprint. A protected remediation runbook is stored in the private IMPERIAL Core governance repository, not exposed publicly.
+
 ## What is implemented
 - Responsive, mobile-first **IMPERIAL CRM Command Deck**, written as first-party HTML, CSS and JavaScript in [site/](site/).
 - Real, read-only public **GitHub API telemetry**: stars, forks, open tracker count, latest commit and latest GitHub Actions result. Client refresh approximately every five minutes, subject to network availability and GitHub rate limits.
