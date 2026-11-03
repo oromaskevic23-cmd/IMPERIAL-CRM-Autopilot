@@ -110,7 +110,7 @@ def draft_hanter_review(snapshot, *, now=None, domain="AI_SERVICES"):
         "schema_version":1,"route_type":"HANTER_REVIEW_PROPOSAL_ONLY",
         "observed_at":stamp.isoformat(),
         "source_age_seconds":int(diff),
-        "hanteR_command_center":"HANTER",
+        "hanter_command_center":"HANTER",
         "domain_orchestrator":VERTICALS[domain],
         "planned_nca_roles":list(NCA_ROLES),
         "case_specific_routing":False,
