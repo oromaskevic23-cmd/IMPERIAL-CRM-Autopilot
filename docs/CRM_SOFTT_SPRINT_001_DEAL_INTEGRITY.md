@@ -5,6 +5,19 @@
 **Budget:** FREE_ONLY.  
 **Current maturity:** executed offline synthetic commercial workflow, validated on GitHub Actions. **NOT** a deployed authenticated CRM backend, operating commercial autopilot or payment service.
 
+## Local expired-lease recovery
+
+In the synthetic SQLite engine, a claim may atomically recover a task when its
+lease has expired. Recovery issues a new token, records `LAB_RECLAIM_EXPIRED`
+without the token, and invalidates the previous token. An active local stop
+continues to block recovery. The transaction serializes competing claimers on
+the same SQLite database; it does not establish distributed queue safety.
+
+The clock and workspace identifiers remain caller-supplied laboratory inputs.
+This is not a production worker, authenticated tenant, remotely enforced kill
+switch, or proof of independent QA. Production execution still requires the
+separate trusted identity, authorization, durable queue and audit controls.
+
 ## Why this sprint
 
 Existing IMPERIAL CRM Autopilot has a well-designed public observational dashboard and a proposed federated architecture, but lacked a tested backend command/ledger boundary. This sprint adds a **self-contained Python 3.11+ SQLite implementation** in [crm_core](../crm_core/engine.py) and a reproducible no-network test runner. No customer records are stored in the public repository or static GitHub Pages.
