@@ -151,15 +151,17 @@ class DealEngine:
             raise Denied("INVALID_LEASE")
         with self._db() as db:
             db.execute("BEGIN IMMEDIATE");self._allowed(db,workspace,case_id)
-            row=db.execute("SELECT t.id,t.role FROM tasks t JOIN cases c ON c.id=t.case_id "
+            row=db.execute("SELECT t.id,t.role,t.state FROM tasks t JOIN cases c ON c.id=t.case_id "
                            "WHERE t.workspace=? AND t.case_id=? AND c.workspace=? "
-                           "AND c.state='LAB_PLANNED' AND t.state='LAB_PENDING' ORDER BY t.rowid LIMIT 1",
-                           (workspace,case_id,workspace)).fetchone()
+                           "AND c.state='LAB_PLANNED' AND (t.state='LAB_PENDING' "
+                           "OR (t.state='LAB_CLAIMED' AND t.expires<=?)) ORDER BY t.rowid LIMIT 1",
+                           (workspace,case_id,workspace,now)).fetchone()
             if row is None:return None
             token=secrets.token_hex(24)
             db.execute("UPDATE tasks SET state='LAB_CLAIMED',worker=?,token_hash=?,expires=? WHERE id=?",
                        (worker,_hash(token),now+lease,row["id"]))
-            self._audit(db,{"event":"LAB_CLAIM","workspace":workspace,"task_id":row["id"],"at":now})
+            event="LAB_RECLAIM_EXPIRED" if row["state"]=="LAB_CLAIMED" else "LAB_CLAIM"
+            self._audit(db,{"event":event,"workspace":workspace,"task_id":row["id"],"at":now})
             return {"task_id":row["id"],"role":row["role"],"token":token,"expires":now+lease}
 
     def complete(self,workspace,task_id,worker,token,result_sha,review_sha,reviewer,now):

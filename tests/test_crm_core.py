@@ -1,5 +1,6 @@
 """Real SQLite and business-boundary tests for synthetic CRM-SOFFT Core."""
 import hashlib
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import sqlite3
 from tempfile import TemporaryDirectory
@@ -186,6 +187,55 @@ class CRMCoreTests(unittest.TestCase):
         with self.assertRaises(Denied):
             self.crm.intake("AI-SERVICES","lead001",digest("source"),
                             "UNAUTHORIZED_DOMAIN","Synthetic request",100)
+
+    def test_23_expired_claim_can_be_reclaimed_but_old_token_cannot_complete(self):
+        lead,_=self.planned()
+        old=self.crm.claim("AI-SERVICES",lead["case_id"],"LAB-WORKER",103,lease=1)
+        recovered=self.crm.claim("AI-SERVICES",lead["case_id"],"LAB-WORKER",104,lease=10)
+        self.assertEqual(recovered["task_id"],old["task_id"])
+        self.assertNotEqual(recovered["token"],old["token"])
+        with self.assertRaisesRegex(Denied,"CLAIM_PROOF_REQUIRED"):
+            self.crm.complete("AI-SERVICES",old["task_id"],"LAB-WORKER",old["token"],
+                              digest("result"),digest("review"),"LAB-REVIEWER",105)
+        result=self.crm.complete("AI-SERVICES",recovered["task_id"],"LAB-WORKER",recovered["token"],
+                                 digest("result"),digest("review"),"LAB-REVIEWER",105)
+        self.assertTrue(result["lab_qa_recorded"])
+        self.assertTrue(self.crm.audit_valid())
+
+    def test_24_only_one_competing_worker_recovers_expired_task(self):
+        lead,_=self.planned()
+        expired=self.crm.claim("AI-SERVICES",lead["case_id"],"FIRST",103,lease=1)
+        for i in range(4):
+            self.crm.claim("AI-SERVICES",lead["case_id"],f"WORKER-{i}",103,lease=30)
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results=list(pool.map(lambda worker: self.crm.claim(
+                "AI-SERVICES",lead["case_id"],worker,104,lease=10), ("RETRY-A","RETRY-B")))
+        winners=[result for result in results if result is not None]
+        self.assertEqual(len(winners),1)
+        self.assertEqual(winners[0]["task_id"],expired["task_id"])
+        self.assertTrue(self.crm.audit_valid())
+
+    def test_25_stop_prevents_recovery_after_expiry(self):
+        lead,_=self.planned()
+        self.crm.claim("AI-SERVICES",lead["case_id"],"LAB-WORKER",103,lease=1)
+        self.crm.stop("case",lead["case_id"],"Local case shutdown",104)
+        with self.assertRaisesRegex(Denied,"STOP_ACTIVE"):
+            DealEngine(self.path).claim("AI-SERVICES",lead["case_id"],"RETRY",105)
+        self.assertEqual(self.crm.summary("AI-SERVICES")["lab_tasks_by_state"]["LAB_STOPPED"],5)
+
+    def test_26_recovery_respects_expiry_and_workspace(self):
+        lead,_=self.planned()
+        first=self.crm.claim("AI-SERVICES",lead["case_id"],"FIRST",103,lease=2)
+        for i in range(4):
+            self.crm.claim("AI-SERVICES",lead["case_id"],f"WORKER-{i}",103,lease=30)
+        self.assertIsNone(self.crm.claim("AI-SERVICES",lead["case_id"],"RETRY",104))
+        self.assertIsNone(self.crm.claim("AUTOMATION",lead["case_id"],"RETRY",105))
+        recovered=self.crm.claim("AI-SERVICES",lead["case_id"],"RETRY",105)
+        self.assertEqual(recovered["task_id"],first["task_id"])
+        with sqlite3.connect(self.path) as db:
+            events=[row[0] for row in db.execute("SELECT event FROM audit")]
+        self.assertTrue(any('"event":"LAB_RECLAIM_EXPIRED"' in event for event in events))
+        self.assertFalse(any(first["token"] in event or recovered["token"] in event for event in events))
 
 
 if __name__=="__main__":
