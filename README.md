@@ -2,7 +2,7 @@
 
 **Enterprise AI-native multi-industry CRM, federated task orchestration and evidence-first commercial operations.**
 
-Founder • Owner • CEO • Chief Systems Architect: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
+Founder • Owner • CEO: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
 
 ## IMPERIAL Core: CRM-SOFFT NCA release authority — Sprint 003
 
