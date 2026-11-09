@@ -2,7 +2,7 @@
 
 **Status:** architectural specification + public GitHub telemetry dashboard. This is NOT evidence that the commercial autopilot, broker network, NCA workers, or payment backend is running.
 
-**Authority:** Alexander Nikolaevich Romaskevich — Founder • Owner • CEO • Chief Systems Architect of IMPERIAL Core. Public authorship: RomaskevicH.
+**Authority:** Alexander Nikolaevich Romaskevich — Founder • Owner • CEO of IMPERIAL Core. Public authorship: RomaskevicH.
 
 ## Canonical operating model
 Architect → HANTER (AI Command Center) → domain- and region-scoped federated orchestrators → Nano Core Agents (NCA) → execution and proof. This is a **federated Multi-Orchestrator Architecture**, not one global orchestrator.

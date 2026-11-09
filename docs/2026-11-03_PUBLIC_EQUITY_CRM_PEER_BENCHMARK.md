@@ -2,7 +2,7 @@
 
 **Research date:** 2026-11-03 · **US equity valuation snapshot:** 2026-11-02 close (USD)  
 **Analyst use:** Product/business strategy for **CRM-SOFFT**, HANTER, CONSTRUCTOR AI, VELION, Capital Core and federated Nano Core Agents; also a **screening-only** public-equity comparable-company analysis.  
-**Authority:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder • Owner • CEO • Chief Systems Architect, final architectural authority.  
+**Authority:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder • Owner • CEO, final architectural authority.  
 **Funding constraint:** FREE_ONLY. No investment order, paid connector or commercial deployment authorized.
 
 ## Executive investment read

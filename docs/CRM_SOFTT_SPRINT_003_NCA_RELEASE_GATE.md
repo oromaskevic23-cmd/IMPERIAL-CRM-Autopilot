@@ -1,7 +1,7 @@
 # CRM-SOFFT — Sprint 003: IMPERIAL Core NCA Release Authority Gate
 
 **Date:** 2026-11-03  
-**Author / Final Architectural Decision Authority:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder • Owner • CEO • Chief Systems Architect.  
+**Author / Final Architectural Decision Authority:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder • Owner • CEO.  
 **Budget:** FREE_ONLY.  
 **Status:** executable local readiness classifier + negative tests in CI. **NOT an authenticated production authority service.**
 

@@ -1,7 +1,7 @@
 # CRM-SOFFT — Sprint 002: Private Read-only Supabase Bridge × HANTER Review Routing
 
 **Checkpoint:** 3 November 2026  
-**Architecture owner:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder • Owner • CEO • Chief Systems Architect, Final Architectural Decision Authority.  
+**Architecture owner:** Alexander Nikolaevich Romaskevich (RomaskevicH), Founder • Owner • CEO, Final Architectural Decision Authority.  
 **Budget:** FREE_ONLY; no paid providers enabled.  
 **Production status:** no production CRM bridge credentials or real HANTER dispatch have been activated.
 

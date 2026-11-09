@@ -2,6 +2,8 @@
 
 **Enterprise AI-native multi-industry CRM, federated task orchestration and evidence-first commercial operations.**
 
+<img src="https://raw.githubusercontent.com/oromaskevic23-cmd/oromaskevic23-cmd/main/assets/alexander-romaskevich-portrait-20261110.jpg" alt="Alexander Nikolaevich Romaskevich, Founder, Owner and CEO of IMPERIAL Core" width="160" />
+
 Founder • Owner • CEO: **Alexander Nikolaevich Romaskevich** — **RomaskevicH**.
 
 ## IMPERIAL Core: CRM-SOFFT NCA release authority — Sprint 003

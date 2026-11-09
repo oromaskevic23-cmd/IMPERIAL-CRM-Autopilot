@@ -1,7 +1,7 @@
 # CRM-SOFFT — Enterprise Deal Integrity & Federated Dispatch · Sprint 001
 
 **Checkpoint:** 3 November 2026  
-**Authority:** Alexander Nikolaevich Romaskevich (RomaskevicH) — Founder • Owner • CEO • Chief Systems Architect, Final Architectural Decision Authority.  
+**Authority:** Alexander Nikolaevich Romaskevich (RomaskevicH) — Founder • Owner • CEO, Final Architectural Decision Authority.  
 **Budget:** FREE_ONLY.  
 **Current maturity:** executed offline synthetic commercial workflow, validated on GitHub Actions. **NOT** a deployed authenticated CRM backend, operating commercial autopilot or payment service.
 
